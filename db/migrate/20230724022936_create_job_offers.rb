@@ -4,7 +4,8 @@ class CreateJobOffers < ActiveRecord::Migration[7.0]
       t.string :title
       t.text :description
       t.decimal :salary
-      t.references :users, null: false, foreign_key: true
+      #t.references :users, null: false, foreign_key: true
+      t.integer :user_id
 
       t.timestamps
     end

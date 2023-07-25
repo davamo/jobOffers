@@ -21,18 +21,18 @@ class JobOffersController < ApplicationController
 
   # POST /job_offers or /job_offers.json
   def create
-    @job_offer = JobOffer.new(job_offer_params)
-
-    respond_to do |format|
-      if @job_offer.save
-        format.html { redirect_to job_offer_url(@job_offer), notice: "Job offer was successfully created." }
-        format.json { render :show, status: :created, location: @job_offer }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @job_offer.errors, status: :unprocessable_entity }
+      @job_offer = JobOffer.new(job_offer_params)
+      respond_to do |format|
+        if @job_offer.save
+          format.html { redirect_to job_offer_url(@job_offer), notice: "Job offer was successfully created." }
+          format.json { render :show, status: :created, location: @job_offer }
+        else
+          format.html { render :new, status: :unprocessable_entity }
+          format.json { render json: @job_offer.errors, status: :unprocessable_entity }
+        end
       end
-    end
   end
+
 
   # PATCH/PUT /job_offers/1 or /job_offers/1.json
   def update
@@ -65,6 +65,6 @@ class JobOffersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def job_offer_params
-      params.require(:job_offer).permit(:title, :description, :salary, :users_id)
+      params.require(:job_offer).permit(:title, :description, :salary, :user_id)
     end
 end

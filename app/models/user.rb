@@ -5,5 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   enum :role, [:user,  :admin]
+
   has_many :images
+  has_many :job_offer
+  has_many :postulations
+
 end
